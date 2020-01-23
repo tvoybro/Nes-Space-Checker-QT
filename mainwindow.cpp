@@ -10,6 +10,10 @@
 #include <QImage>
 #include <QSettings>
 #include <QCloseEvent>
+#include <QDragEnterEvent>
+#include <QDragLeaveEvent>
+#include <QDropEvent>
+#include <QCommandLineParser>
 
 static char *file_data;
 static int file_size;
@@ -26,6 +30,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setAcceptDrops(true);
+    setAutoFillBackground(true);
     readSettings();
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
@@ -131,7 +137,7 @@ void MainWindow::DrawCHR(int x,int y,char *data,QPainter *localpainter)
 void MainWindow::ShowNES()
 {
     QPainter painter(this);
-//    painter.begin(this);
+    painter.begin(this);
 
     QString str;
     int lens[256];
@@ -266,6 +272,10 @@ bool MainWindow::LoadNES(QString file_name)
 {
     char NESHeader[16];
 
+    // file_name="/home/alex/rom.nes";
+
+    ui->menuHelp->setTitle(file_name);
+
     QFile* nes_file = new QFile(file_name);
 
     filename = file_name;
@@ -372,7 +382,6 @@ void MainWindow::on_actionReload_triggered()
 
 void MainWindow::updateTimer()
 {
-    qDebug("Timer active");
 
     if (!(ui->actionWatch->isChecked()))
         return;
@@ -431,13 +440,43 @@ void MainWindow::on_actionSave_report_triggered()
 
     img.save(path+".png");
 
-    QByteArray ba = path.toLocal8Bit();
+    // QByteArray ba = path.toLocal8Bit();
 
     // unsigned char *res = (unsigned char *)strdup(ba.constData());
     // qDebug("%s",res);
 
 }
 
-void MainWindow::on_actionChart_triggered()
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
+     setBackgroundRole(QPalette::Highlight);
+     event->acceptProposedAction();
+     emit changed(event->mimeData());
+}
+
+void MainWindow::dragLeaveEvent(QDragLeaveEvent *event)
+{
+    setBackgroundRole(QPalette::NoRole);
+    clear();
+    event->accept();
+}
+
+void MainWindow::dropEvent(QDropEvent *event)
+{
+    const QMimeData *mimeData = event->mimeData();
+    if (mimeData->hasUrls()) {
+        QList<QUrl> urlList = mimeData->urls();
+        QString text;
+        if (urlList.size() > 0) {
+            text = urlList.at(0).path();
+            LoadNES(text);
+            MainWindow::repaint();
+        }
+    }
+    setBackgroundRole(QPalette::NoRole);
+}
+
+void MainWindow::clear()
+{
+    emit changed();
 }

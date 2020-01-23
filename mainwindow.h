@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QTime>
 #include <about.h>
+#include <QMimeData>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,11 +22,14 @@ public:
     ~MainWindow() override;
 
 protected:
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
+    void dragLeaveEvent(QDragLeaveEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     void closeEvent(QCloseEvent *event) override;
     About *about;
-private slots:
 
+private slots:
     void updateTimer();
     void DrawPRG(int x,int y,char *data, QPainter *localpainter, int fill);
     void DrawCHR(int x,int y,char *data, QPainter *localpainter);
@@ -50,7 +54,11 @@ private slots:
 
     void on_actionSave_report_triggered();
 
-    void on_actionChart_triggered();
+public slots:
+    void clear();
+
+signals:
+    void changed(const QMimeData *mimeData = nullptr);
 
 private:
     void readSettings();
