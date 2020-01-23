@@ -1,3 +1,5 @@
+![Alt text](/Screenshots/NES_Space_Checker_QT.png?raw=true "NES Screen Checker screenshot")
+
 # Nes-Space-Checker-QT
 
  This small tool is intended to help you with controlling free ROM space 
@@ -29,7 +31,7 @@ will be just treated like a set of 16K data chunks.
 
 Versions:
 
-v1.2  23.01.20 - Support for other binary files
+v1.2  23.01.20
 
 mailto:shiru@mail.ru
 http://shiru.untergrund.net/
