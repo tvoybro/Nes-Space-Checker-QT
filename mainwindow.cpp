@@ -468,7 +468,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         QList<QUrl> urlList = mimeData->urls();
         QString text;
         if (urlList.size() > 0) {
-            text = urlList.at(0).path();
+            text = urlList.at(0).toLocalFile();
             LoadNES(text);
             MainWindow::repaint();
         }
