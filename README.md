@@ -1,4 +1,5 @@
-![Alt text](/Screenshots/NES_Space_Checker_QT.png?raw=true "NES Screen Checker screenshot")
+![Alt text](/Screenshots/NES_Space_Checker_QT_windows.png?raw=true "NES Screen Checker Windows screenshot")
+![Alt text](/Screenshots/NES_Space_Checker_QT_KDE.png?raw=true "NES Screen Checker Debian screenshot")
 
 # Nes-Space-Checker-QT
 
