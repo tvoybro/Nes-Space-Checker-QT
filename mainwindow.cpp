@@ -137,7 +137,6 @@ void MainWindow::DrawCHR(int x,int y,char *data,QPainter *localpainter)
 void MainWindow::ShowNES()
 {
     QPainter painter(this);
-    painter.begin(this);
 
     QString str;
     int lens[256];
@@ -265,7 +264,6 @@ void MainWindow::ShowNES()
             hgt=128+40;
         }
     }
-    painter.end();
 }
 
 bool MainWindow::LoadNES(QString file_name)
@@ -274,7 +272,7 @@ bool MainWindow::LoadNES(QString file_name)
 
     // file_name="/home/alex/rom.nes";
 
-    ui->menuHelp->setTitle(file_name);
+    // ui->menuHelp->setTitle(file_name);
 
     QFile* nes_file = new QFile(file_name);
 
