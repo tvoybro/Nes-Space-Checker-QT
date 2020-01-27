@@ -13,7 +13,8 @@
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
 #include <QDropEvent>
-#include <QCommandLineParser>
+
+#include <QDebug>
 
 static char *file_data;
 static int file_size;
@@ -29,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    if (qApp->arguments().count() > 1)
+        LoadNES(qApp->arguments().takeAt(1));
+
     ui->setupUi(this);
     setAcceptDrops(true);
     setAutoFillBackground(true);
