@@ -32,8 +32,10 @@ will be just treated like a set of 16K data chunks.
 
 Versions:
 
-v1.2       >     23.01.20
-v1.2.5     >     27.01.20
+v1.2            23.01.20
+
+v1.2.5          27.01.20
+
 
 mailto:shiru@mail.ru
 http://shiru.untergrund.net/
