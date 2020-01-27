@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;NES Space checker Qt 1.2&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Original Windows version by Shiru&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Qt porting by mr287cc&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;NES Space checker Qt 1.2.5&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://shiru.untergrund.net/software.shtml&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Original Windows version&lt;/span&gt;&lt;/a&gt; by Shiru&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Qt porting by &lt;a href=&quot;mailto:wecleman@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;mr287cc&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
