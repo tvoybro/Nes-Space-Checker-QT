@@ -4,6 +4,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
 
+QMAKE_LFLAGS += -s # Убрать все таблицы символов из результирующего бинарника ( man gcc )
+# 3-rd party библиотеки, (boost, gmp, ... ) если есть статический вариант добавляем так:
+#LIBS += -Wl, -Bstatic, -lboost_regex, -lgmp, -lgmpxx, -Bdynamic
+
+LIBS += -Wl,-rpath lib/
+
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the

@@ -328,7 +328,9 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    if (LoadNES(QFileDialog::getOpenFileName(this, "Open a file", lastdir))) {
+    QString selfilter = "NES images (*.nes)";
+
+    if (LoadNES(QFileDialog::getOpenFileName(this, "Open a file", lastdir, tr("All files (*.*);;NES images (*.nes)" ), &selfilter ))) {
        ui->actionReload->setEnabled(1);
     }
     MainWindow::repaint();
@@ -426,6 +428,7 @@ void MainWindow::readSettings()
 void MainWindow::on_actionAbout_triggered()
 {
     about = new About(this);
+    about->setModal(true);
     about->show();
 }
 
